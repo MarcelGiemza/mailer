@@ -1,0 +1,66 @@
+.Messages {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  overflow: display;
+  flex-direction: column;
+
+  .popup-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .Popup {
+      background: wheat;
+      padding: 40px;
+      border-radius: 30px;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .buttons{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+    button {
+      font-weight: bold;
+      font-size: 1.1rem;
+      height: 40px;
+      width: 25%;
+    }
+    .refresh {}
+
+    .new-message {
+    }
+  }
+
+  .messages-wrapper {
+    display: flex;
+    width: 100%;
+    height: 92%;
+    justify-content: center;
+    gap: 10px;
+
+    section {
+      display: flex;
+      flex-direction: column;
+      width: 30%;
+      height: 100%;
+
+      .messages-box {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        overflow-y: scroll;
+      }
+    }
+  }
+}

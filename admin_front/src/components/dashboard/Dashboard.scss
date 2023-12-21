@@ -1,0 +1,58 @@
+@import './../../colors.scss';
+
+.dashboard-container {
+  table {
+    max-width: 800px;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #D6EEEE;
+  }
+  .form {
+    width: 200px;
+    margin: 0 auto;
+    background: $background;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    h2 {
+      color: $white;
+      font-size: 18px;
+      text-align: center;
+    }
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+
+    * {
+      outline: none;
+    }
+
+    input, select, button {
+      margin-bottom: 10px;
+      border-radius: 4px;
+      border: none;
+      padding: 4px 10px;
+    }
+    button {
+      background: $btnHover;
+      color: $white;
+      cursor: pointer;
+      margin-top: 10px;
+
+      &:hover {
+          background: $btnHover;
+      }
+    }
+  }
+}

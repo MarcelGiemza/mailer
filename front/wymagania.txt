@@ -1,0 +1,12 @@
+1 Logowanie dla użytkownika (admin też może się zalogować)
+1 Przycisk do obierania wiadomości
+1 Odbieranie wiadomości na starcie
+1 Wysyłanie wiadomości
+0.5 Usuwanie wiadomości
+0.5 Informacja, czy wiadomość została przeczytana
+1 Informacja na jakim koncie jestem zalogowany
+1 Informacja o dacie i godzinie wysłania wiadomości
+0 Podpowiadanie dostępnych użytkowników, do których możemy wysłać wiadomość
+1 Wylogowanie (niszczenie tokena)
+0 RWD
+0 Clean Code

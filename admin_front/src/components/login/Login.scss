@@ -1,0 +1,45 @@
+@import './../../colors.scss';
+
+.login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $background;
+    height: 100vh;
+
+    .form {
+        display: flex;
+        flex-direction: column;
+
+        h2 {
+            font-size: 16px;
+            color: $white;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+
+            * {
+                outline: none;
+            }
+
+            input, button {
+                margin-bottom: 10px;
+                border-radius: 4px;
+                border: none;
+                padding: 4px 10px;
+            }
+            button {
+                background: $btnHover;
+                color: $white;
+                cursor: pointer;
+
+                &:hover {
+                    background: $btnHover;
+                }
+            }
+        }
+    }
+}
