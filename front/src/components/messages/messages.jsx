@@ -99,7 +99,7 @@ const Messages = () => {
           <h1>Recieved</h1>
           <div className="messages-box">
             {receivedMessages.map((message) => (
-              <Message message={message} sent="false" />
+              <Message message={message} sent="false" getReceived={getReceived}/>
             ))}
           </div>
         </section>

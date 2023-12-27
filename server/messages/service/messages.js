@@ -63,11 +63,24 @@ const deleteMessage = async (req, res) => {
   } catch(err) {
     return res.status(500).json({ success: false })
   }
-}
+};
+
+const readMessage = async (req, res) => {
+  const id = req.body.id;
+  try {
+    const token = req.query.token;
+    const decoded = jwt.verify(token, "mailer123");
+    await Message.updateOne({ _id: id }, {read: true})
+    return res.status(200).json({ success: true })
+  } catch(err) {
+    return res.status(500).json({ success: false })
+  }
+};
 
 module.exports = {
   getReceived,
   getSent,
   addMessage,
   deleteMessage,
+  readMessage,
 };

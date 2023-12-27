@@ -6,6 +6,7 @@ router.get('/api/messages/received', messagesService.getReceived);
 router.get('/api/messages/sent', messagesService.getSent);
 router.post('/api/messages/sendNew', messagesService.addMessage);
 router.post('/api/messages/delete', messagesService.deleteMessage);
+router.post('/api/messages/read', messagesService.readMessage);
 
 module.exports = router;
 
