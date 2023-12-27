@@ -1,0 +1,20 @@
+.message {
+  // display: flex;
+  // flex-direction: column;
+  box-sizing: border-box;
+  .email {
+    font-size: 0.9rem;
+    color: #333;
+  }
+  .title {
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  .time{
+    font-size: 0.75rem;
+    color: #353535;
+  }
+  .read {
+    font-size: 0.75rem;
+  }
+}

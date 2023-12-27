@@ -92,7 +92,6 @@ const getUserEmails = async (req, res) => {
 
 
     const user = await Users.findOne({id: decoded._id});
-    console.log(user)
 
     if (user) {
       const usersData = await Users.find();

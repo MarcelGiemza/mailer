@@ -1,4 +1,5 @@
 import axios from "axios";
+import "./message.scss"
 
 const Message = (props) => {
   const message = props.message;
@@ -28,13 +29,13 @@ const Message = (props) => {
     <div className="email">{sent ? `To: ${message.receiver}` : `From: ${message.sender}`}</div>
     <div className="title">{message.title}</div>
     <div className="content">{message.content}</div>
-    <div className="content">{`${date.getHours()}:${date.getMinutes()} of ${date.getDay()}/${date.getMonth()+1}/${date.getFullYear()}`}</div>
+    <div className="time">{`${date.getHours()}:${date.getMinutes()} of ${date.getDay()}/${date.getMonth()+1}/${date.getFullYear()}`}</div>
     {sent ? (
       <>
-        <span className="read">Read: {`${message.read}`}</span>
-        <button className="delete" type="button" onClick={deleteMessage}>Delete</button>
+        <span className="read">Read: {`${message.read ? "Yes" : "No"}`}</span>
+        <button className="delete cancel" type="button" onClick={deleteMessage}>Delete</button>
       </>
-    ): (<button className="read" type="button" onClick={readMessage}>Read: {`${message.read}`}</button>)}
+    ): (<button className="read" type="button" onClick={readMessage}>Read: {`${message.read ? "Yes" : "No"}`}</button>)}
   </div>
   )
 };

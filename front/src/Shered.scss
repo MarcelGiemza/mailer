@@ -1,8 +1,38 @@
 button {
   border: none;
   border-radius: 10px;
-  padding: 10px;
+  padding: 0.7em;
+  transition: 100ms;
+  background: #E0F2F1;
+
+  &:active {
+    scale: 0.95;
+  }
+
+  &:hover {
+    background: #B2DFDB;
+
+    &.confirm {
+      background: #1565C0;
+    }
+
+    &.cancel {
+      background: #D50000;
+    }
+  }
+
+  &.confirm {
+    background: #2196F3;
+  }
+
+  &.cancel {
+    background: #EF5350;
+  }
 }
-button.confirm {
-  background: blue;
-};
+
+input {
+  border-radius: 10px;
+  border: none;
+  border-bottom: 2px solid #333;
+  padding: 0.7em;
+}
