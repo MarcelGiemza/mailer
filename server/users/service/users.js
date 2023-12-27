@@ -91,7 +91,7 @@ const getUserEmails = async (req, res) => {
     const decoded = jwt.verify(token, 'mailer123');
 
 
-    const user = await Users.findOne({_id: decoded._id});
+    const user = await Users.findOne({id: decoded._id});
     console.log(user)
 
     if (user) {

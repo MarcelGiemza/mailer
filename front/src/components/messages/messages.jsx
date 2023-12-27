@@ -3,12 +3,15 @@ import Message from "../message/message.jsx";
 import axios from "axios";
 import "./messages.scss";
 import { useNavigate } from "react-router-dom";
+import DropdownList from "react-widgets/DropdownList";
+import "react-widgets/scss/styles.scss";
 
 const Messages = () => {
   const naviagte = useNavigate();
   const [receivedMessages, setReceivedMessages] = useState([]);
   const [sentMessages, setSentMessages] = useState([]);
   const [popup, setPopup] = useState(false);
+  const [avilibleEmails, setAvilibleEmails] = useState([]);
 
   const getReceived = async () => {
     const response = await axios.get(`/api/messages/received?token=${sessionStorage.getItem("token")}`);
@@ -30,13 +33,14 @@ const Messages = () => {
   useEffect(() => {
     getReceived();
     getSent();
+    getAvilibleUsers();
   }, []);
 
   const sendMessage = async (e) => {
     const form = e.target.parentNode;
     const recv = form[0].value;
-    const title = form[1].value;
-    const content = form[2].value;
+    const title = form[2].value;
+    const content = form[3].value;
     // TODO: check is valid
 
     const messageData = {receiver: recv, title: title, content: content}
@@ -60,7 +64,9 @@ const Messages = () => {
 
   const getAvilibleUsers = async () => {
     const response = await axios(`/api/emails?token=${sessionStorage.getItem("token")}`)
-    console.log(response)
+    if (response.data.success) {
+      setAvilibleEmails(response.data.emails)
+    };
   }
 
   return (
@@ -70,24 +76,23 @@ const Messages = () => {
           <form className="Popup">
             <h2>Send Message</h2>
             <label htmlFor="reciever">Reciever</label>
-            <input name="reciever" placeholder="example@email.com" type="email" id="reciever" />
+            <DropdownList data={avilibleEmails} id="reciever" name="reciever" placeholder="email" />
             <label htmlFor="title">Title</label>
             <input name="title" placeholder="title" type="text" id="title" />
             <label htmlFor="content">Content</label>
             <input name="content" placeholder="content" type="text" id="content" />
-            <button type="button" onClick={sendMessage}>Send</button>
-            <button type="button" onClick={() => setPopup(false)}>Cancel</button>
+            <button type="button" className="confirm" onClick={sendMessage}>Send</button>
+            <button type="button" className="cancle" onClick={() => setPopup(false)}>Cancel</button>
           </form>
         </div>
       )}
       <div className="account">
         {`Logged in as: ${sessionStorage.getItem("email")}`}
         <button type="button" className="logout" onClick={logout}>Logout</button>
-
       </div>
       <div className="buttons">
         <button type="button" className="refresh" onClick={getReceived}>Refresh</button>
-        <button type="button" className="new-message" onClick={() => {setPopup(true); getAvilibleUsers()}}>Send New</button>
+        <button type="button" className="new-message" onClick={() => setPopup(true)}>Send New</button>
       </div>
       <div className="messages-wrapper">
         <section className="recieved">
