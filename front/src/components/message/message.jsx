@@ -29,7 +29,7 @@ const Message = (props) => {
     <div className="email">{sent ? `To: ${message.receiver}` : `From: ${message.sender}`}</div>
     <div className="title">{message.title}</div>
     <div className="content">{message.content}</div>
-    <div className="time">{`${date.getHours()}:${date.getMinutes()} of ${date.getDay()}/${date.getMonth()+1}/${date.getFullYear()}`}</div>
+    <div className="time">{`${date.getHours()}:${date.getMinutes() > 9 ? date.getMinutes() : `0${date.getMinutes()}`} of ${date.getDay()}/${date.getMonth()+1}/${date.getFullYear()}`}</div>
     {sent ? (
       <>
         <span className="read">Read: {`${message.read ? "Yes" : "No"}`}</span>
