@@ -23,12 +23,12 @@ const Popup = (props) => {
     const emailIsValid = /^\S+@\S+\.\S+$/.test(recv);
     if (!emailIsValid) {
       setMsg("Incorrect email")
-      setInterval(() => {
+      setTimeout(() => {
         setMsg("")
       }, 10000);
     } else if (!title) {
       setMsg("Title is required")
-      setInterval(() => {
+      setTimeout(() => {
         setMsg("")
       }, 10000);
     } else {
@@ -42,13 +42,13 @@ const Popup = (props) => {
           props.getSent()
         } else {
           setMsg("Message failed to send")
-          setInterval(() => {
+          setTimeout(() => {
             setMsg("")
           }, 10000);
         }
       } catch {
         setMsg("Error")
-        setInterval(() => {
+        setTimeout(() => {
           setMsg("")
         }, 10000);
       }
