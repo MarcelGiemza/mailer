@@ -10,6 +10,7 @@ const Messages = () => {
   const [receivedMessages, setReceivedMessages] = useState([]);
   const [sentMessages, setSentMessages] = useState([]);
   const [popup, setPopup] = useState(false);
+  const [msg, setMsg] = useState("");   
 
   const getReceived = async () => {
     const response = await axios.get(`/api/messages/received?token=${sessionStorage.getItem("token")}`);
@@ -41,7 +42,8 @@ const Messages = () => {
 
   return (
     <div className="Messages">
-      {popup && <Popup getSent={getSent} setPopup={setPopup} />}
+      {popup && <Popup getSent={getSent} setPopup={setPopup} setMsg={setMsg}/>}
+      {msg && <div className="msg">{msg}</div>}
       <div className="account">
         Logged in as: <b>{sessionStorage.getItem("email")}</b>
         <button type="button" className="logout cancel" onClick={logout}>Logout</button>

@@ -6,6 +6,7 @@ import "./popup.scss"
 
 const Popup = (props) => {
   const [avilibleEmails, setAvilibleEmails] = useState([]);
+  const setMsg = props.setMsg;
 
   const getAvilibleUsers = async () => {
     const response = await axios(`/api/emails?token=${sessionStorage.getItem("token")}`)
@@ -19,24 +20,45 @@ const Popup = (props) => {
     const recv = form[0].value;
     const title = form[2].value;
     const content = form[3].value;
-    // TODO: check is valid
+    const emailIsValid = /^\S+@\S+\.\S+$/.test(recv);
+    if (!emailIsValid) {
+      setMsg("Incorrect email")
+      setInterval(() => {
+        setMsg("")
+      }, 10000);
+    } else if (!title) {
+      setMsg("Title is required")
+      setInterval(() => {
+        setMsg("")
+      }, 10000);
+    } else {
 
-    const messageData = {receiver: recv, title: title, content: content}
+      const messageData = {receiver: recv, title: title, content: content}
 
-    try {
-      const response = await axios.post(`/api/messages/sendNew?token=${sessionStorage.getItem("token")}`, messageData)
-      if (response.data.success === true) {
-        props.setPopup(false)
-        props.getSent()
+      try {
+        const response = await axios.post(`/api/messages/sendNew?token=${sessionStorage.getItem("token")}`, messageData)
+        if (response.data.success === true) {
+          props.setPopup(false)
+          props.getSent()
+        } else {
+          setMsg("Message failed to send")
+          setInterval(() => {
+            setMsg("")
+          }, 10000);
+        }
+      } catch {
+        setMsg("Error")
+        setInterval(() => {
+          setMsg("")
+        }, 10000);
       }
-    } catch {
-
     }
   };
 
   useEffect(() => {
     getAvilibleUsers();
   }, [])
+
   return (
     <div className="popup-wrapper">
       <form className="Popup">
