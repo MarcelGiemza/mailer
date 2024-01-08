@@ -1,5 +1,5 @@
 import './App.scss';
-import './Shered.scss';
+import './Shared.scss';
 import { Messages, Login } from "./components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
